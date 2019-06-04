@@ -15,4 +15,3 @@ export class CatsController {
     this.cats.create(createCatDto);
   }
 }
-ojy7WI9qlCA6Ck1p
