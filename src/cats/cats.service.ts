@@ -7,14 +7,14 @@ import { Cat } from './cat.interface';
 export class CatsService {
   constructor(@InjectModel('Cat') private readonly catModel: Model<Cat>) {}
   async findAll(): Promise<Cat[]> {
-    return await this.catModel.find().exec();
+    return await this.catModel.find(null, '-__v').exec();
   }
   async create(createCatDto: CreateCatDto) {
     const createdCat = new this.catModel(createCatDto);
     return await createdCat.save();
   }
   async get(catID: string) {
-    const cat = await this.catModel.findById(catID);
+    const cat = await this.catModel.findById(catID, '-_id -__v');
     return cat;
   }
 }
