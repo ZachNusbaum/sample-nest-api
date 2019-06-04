@@ -12,7 +12,7 @@ export class CatsController {
 
   @Post()
   async create(@Body() createCatDto: CreateCatDto) {
-    this.cats.create(createCatDto);
+    return this.cats.create(createCatDto);
   }
 
   @Get(':id')
