@@ -9,7 +9,7 @@ import { MongooseModule } from '@nestjs/mongoose';
   imports: [
     PlaceholderModule,
     CatsModule,
-    MongooseModule.forRoot('mongodb://localhost/nest'),
+    MongooseModule.forRoot(process.env.MONGO_URL || 'mongodb://localhost/nest'),
   ],
   controllers: [AppController],
   providers: [AppService],
