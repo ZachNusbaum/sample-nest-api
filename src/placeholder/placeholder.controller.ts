@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { PostsService } from '../placeholder/posts/posts.service';
 
 @Controller('placeholder')
@@ -7,7 +7,11 @@ export class PlaceholderController {
   @Get()
   async getAll() {
     let posts = await this.posts.getAll();
-    console.log(posts);
     return posts;
+  }
+
+  @Get(':id')
+  async getOne(@Param('id') id) {
+    return await this.posts.getOne(id);
   }
 }

@@ -12,4 +12,10 @@ export class PostsService {
       .get('https://jsonplaceholder.typicode.com/posts')
       .pipe(map(res => res.data));
   }
+
+  getOne(postID: number) {
+    return this.http
+      .get(`https://jsonplaceholder.typicode.com/posts/${postID}`)
+      .pipe(map(res => res.data));
+  }
 }
