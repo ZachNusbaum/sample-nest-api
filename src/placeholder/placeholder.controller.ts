@@ -6,7 +6,7 @@ export class PlaceholderController {
   constructor(private readonly posts: PostsService) {}
   @Get()
   async getAll() {
-    let posts = await this.posts.getAll();
+    const posts = await this.posts.getAll();
     return posts;
   }
 

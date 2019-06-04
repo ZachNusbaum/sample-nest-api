@@ -7,13 +7,13 @@ import { AxiosResponse } from 'axios';
 export class PostsService {
   constructor(private readonly http: HttpService) {}
 
-  getAll(): Observable<AxiosResponse<any>> {
+  getAll(): Observable<any> {
     return this.http
       .get('https://jsonplaceholder.typicode.com/posts')
       .pipe(map(res => res.data));
   }
 
-  getOne(postID: number) {
+  getOne(postID: number): Observable<any> {
     return this.http
       .get(`https://jsonplaceholder.typicode.com/posts/${postID}`)
       .pipe(map(res => res.data));
