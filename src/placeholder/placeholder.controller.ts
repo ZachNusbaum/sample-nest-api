@@ -1,5 +1,6 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Param, UseFilters } from '@nestjs/common';
 import { PostsService } from '../placeholder/posts/posts.service';
+import { HttpNotFoundExceptionFilter } from '../filters/http-not-found-exception.filter';
 
 @Controller('placeholder')
 export class PlaceholderController {
@@ -11,6 +12,7 @@ export class PlaceholderController {
   }
 
   @Get(':id')
+  @UseFilters(new HttpNotFoundExceptionFilter())
   async getOne(@Param('id') id) {
     return await this.posts.getOne(id);
   }
