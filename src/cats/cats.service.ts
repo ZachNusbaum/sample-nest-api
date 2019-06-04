@@ -13,4 +13,8 @@ export class CatsService {
     const createdCat = new this.catModel(createCatDto);
     return await createdCat.save();
   }
+  async get(catID: string) {
+    const cat = await this.catModel.findById(catID);
+    return cat;
+  }
 }
