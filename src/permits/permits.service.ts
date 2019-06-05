@@ -12,7 +12,21 @@ export class PermitsService {
   }
 
   async create(createPermitDto: CreatePermitDto) {
-    const permit = new this.permits(createPermitDto);
-    return await permit.save();
+    const permit = await this.permits.create(createPermitDto);
+    return permit;
+  }
+
+  async verify(permitNumber: string) {
+    const permit = await this.permits.findOne({ permitNumber });
+    if (permit) {
+      return {
+        valid: true,
+        id: permitNumber,
+        expiresAt: permit.expiresAt,
+        permitHolder: `${permit.lastName}, ${permit.firstName}`,
+      };
+    } else {
+      return { valid: false };
+    }
   }
 }

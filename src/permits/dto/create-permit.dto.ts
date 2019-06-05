@@ -6,5 +6,5 @@ export class CreatePermitDto {
   active: boolean = true;
   createdAt: Date = new Date();
   expiresAt: Date | null = null;
-  permitNumber: string = Ulid.generate();
+  permitNumber: string;
 }

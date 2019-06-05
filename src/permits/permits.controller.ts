@@ -16,4 +16,9 @@ export class PermitsController {
     createPermitDto.permitNumber = Ulid.generate().toRaw();
     return await this.permits.create(createPermitDto);
   }
+
+  @Post('verify')
+  verify(@Body('permitNumber') permitNumber: string) {
+    return this.permits.verify(permitNumber);
+  }
 }
